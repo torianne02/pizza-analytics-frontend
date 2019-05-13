@@ -1,0 +1,51 @@
+import React, { Component } from 'react';
+import Pizzas from '../components/pizzas/Pizzas';
+import MonthlyHigh from '../components/pizzas/MonthlyHigh';
+import Streaks from '../components/pizzas/streaks/Streaks';
+
+class PizzasContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pizzas: [],
+      monthlySales: [],
+      streaks: [],
+    }
+  }
+
+  getPizzas = async () => {
+    // fetch request for /pizzas
+  }
+
+  getMonthlySales = async () => {
+    // fetch request for /pizzas/monthly-sales
+  }
+
+  getStreaks = async () => {
+    // fetch request for /pizzas/streaks
+  }
+
+  render() {
+    return (
+      <div className="pizzas">
+        <div className="pizzas-info">
+          <Pizzas
+            pizzas={this.state.pizzas}
+          />
+        </div>
+        <div className="streaks-info">
+          <Streaks
+            streaks={this.state.streaks}
+          />
+        </div>
+        <div className="monthly-sales-info">
+          <MonthlyHigh
+            monthlySales={this.state.monthlySales}
+          />
+        </div>
+      </div>
+    )
+  }
+}
+
+export default PizzasContainer
