@@ -8,7 +8,7 @@ const Streak = ( props ) =>
         <CardTitle>Streak</CardTitle>
         <CardText>
           { props.map((day) => {
-            return <Row>{ day.date } | { day.numSales }</Row>
+            return(<Row>{ day.date } | { day.numSales }</Row>)
           })}
         </CardText>
       </CardBody>
