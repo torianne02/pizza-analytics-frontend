@@ -1,6 +1,5 @@
 import React from 'react';
-import { ListGroup, ListGroupItem, ListGroupItemHeading, ListGroupItemText } from 'reactstrap';
-import Person from './Person';
+import { ListGroup, ListGroupItem, ListGroupItemText } from 'reactstrap';
 
 const People = ( props ) =>
   <div className="people-list">
