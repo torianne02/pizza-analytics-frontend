@@ -6,7 +6,7 @@ const Pizzas = ( props ) =>
     { props.pizzas.map((pizza) => {
       return <Pizza
         topping={ pizza.topping }
-        date={pizza.date}
+        date={ pizza.date_consumed }
       />
     }) }
   </div>
