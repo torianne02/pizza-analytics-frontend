@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchForm from '../components/people/SearchForm';
 import Person from '../components/people/Person';
+import People from '../components/people/People';
 
 class PeopleContainer extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class PeopleContainer extends Component {
     this.state = {
       name: '',
       pizzas: [],
+      people: [],
       submitted: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -34,15 +36,27 @@ class PeopleContainer extends Component {
     }
   }
 
+  componentDidMount() {
+    const requestInfo = {
+      method: 'GET',
+    }
+
+    fetch(`http://127.0.0.1:9393/api/v1/people`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        name: response.name,
+        pizzas: response[1],
+        submitted: false,
+      })
+    })
+  }
+
   getPerson = async () => {
     const name = this.state.name
     const requestInfo = {
       method: 'GET',
     }
-
-    // const api_call = await fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo);
-    // const response = await api_call.json();
-    // console.log(response)
 
     fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo)
     .then(response => console.log(response))
@@ -55,6 +69,15 @@ class PeopleContainer extends Component {
     })
   }
 
+  renderPerson() {
+    return (
+      <Person
+        name={this.state.name}
+        pizzas={this.state.pizzas}
+      />
+    )
+  }
+
   render() {
     return (
       <div className="people">
@@ -64,11 +87,11 @@ class PeopleContainer extends Component {
             handleOnChange={this.handleOnChange}
             handleOnSubmit={this.handleOnSubmit}
           />
+          { this.state.submitted && this.renderPerson() }
         </div>
         <div className="person-info">
-          <Person
-            name={this.state.name}
-            pizzas={this.state.pizzas}
+          <People
+            people={this.state.people}
           />
         </div>
       </div>
