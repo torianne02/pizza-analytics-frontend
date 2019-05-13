@@ -5,9 +5,9 @@ const People = ( props ) =>
   <div className="people-list">
     <ListGroup>
       <ListGroupItem>
-        { props.people.map((person) => {
+        { props.people.map((person, i) => {
           return (
-            <ListGroupItemText>{ props.name }</ListGroupItemText>
+            <ListGroupItemText key={i}>{ person.name }</ListGroupItemText>
           )
         }) }
       </ListGroupItem>
