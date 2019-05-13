@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Card, CardTitle, CardSubtitle, CardBody, CardText } from 'reactstrap';
+import { Row, Card, CardTitle, CardBody, CardText } from 'reactstrap';
 
 const MonthlyHigh = ( props ) =>
   <div className="monthly-high">
