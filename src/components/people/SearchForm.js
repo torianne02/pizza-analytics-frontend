@@ -3,7 +3,7 @@ import { Container, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const SearchForm = props => {
   return (
-    <Container className="name-search">
+    <Container className="form">
       <Form onSubmit={ props.handleOnSubmit }>
         <FormGroup>
           <Label for="name">Name: </Label>
