@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Card, CardTitle, CardSubtitle, CardBody} from 'reactstrap';
+import { Row, Card, CardTitle, CardSubtitle, CardBody, CardText} from 'reactstrap';
 
 const Streak = ( props ) =>
   <div className="streak">
