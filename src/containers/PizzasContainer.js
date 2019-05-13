@@ -12,7 +12,9 @@ class PizzasContainer extends Component {
       monthlySales: [],
       streaks: [],
       toppings: [],
+      topping: "",
     }
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +55,50 @@ class PizzasContainer extends Component {
     })
   }
 
+  handleOnChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleOnSubmit = event => {
+    event.preventDefault();
+
+    if (this.state.topping) {
+      this.getPizzas();
+      this.setState({
+        topping: '',
+        pizzas: [],
+        submitted: true,
+      })
+    } else {
+      return alert('Oops! Please select a topping!')
+    }
+  }
+
+  getPizzas = async () => {
+    const requestInfo = {
+      method: 'GET',
+    }
+
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        pizzas: response,
+        submitted: false,
+      })
+    })
+  }
+
+  renderPizza() {
+    return (
+      <Pizzas
+        pizzas={this.state.pizzas}
+      />
+    )
+  }
+
   render() {
     return (
       <div className="pizzas">
@@ -74,7 +120,10 @@ class PizzasContainer extends Component {
         <div className="dropdown">
           <ToppingSearch
             toppings={this.state.toppings}
+            handleOnChange={this.handleOnChange}
+            handleOnSubmit={this.handleOnSubmit}
           />
+          { this.state.submitted && this.renderPizza() }          
         </div>
       </div>
     )
