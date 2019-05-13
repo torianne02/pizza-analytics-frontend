@@ -15,20 +15,42 @@ class PizzasContainer extends Component {
     }
   }
 
-  getPizzas = async () => {
-    // fetch request for /pizzas
-  }
+  componentDidMount() {
+    const requestInfo = {
+      method: 'GET',
+    }
 
-  getMonthlySales = async () => {
-    // fetch request for /pizzas/monthly-sales
-  }
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        pizzas: response,
+      })
+    })
 
-  getStreaks = async () => {
-    // fetch request for /pizzas/streaks
-  }
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas/monthly-sales`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        monthlySales: response,
+      })
+    })
 
-  getToppings = async () => {
-    // fetch call to /pizzas to retreive all toppings
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas/streaks`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        streaks: response,
+      })
+    })
+
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        // toppings: response.each {|pizza| pizza.topping}
+      })
+    })
   }
 
   render() {
