@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pizzas from '../components/pizzas/Pizzas';
 import MonthlyHigh from '../components/pizzas/MonthlyHigh';
 import Streaks from '../components/pizzas/streaks/Streaks';
+import ToppingSearch from '../components/pizzas/ToppingSearch';
 
 class PizzasContainer extends Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class PizzasContainer extends Component {
       pizzas: [],
       monthlySales: [],
       streaks: [],
+      toppings: [],
     }
   }
 
@@ -23,6 +25,10 @@ class PizzasContainer extends Component {
 
   getStreaks = async () => {
     // fetch request for /pizzas/streaks
+  }
+
+  getToppings = async () => {
+    // fetch call to /pizzas to retreive all toppings
   }
 
   render() {
@@ -41,6 +47,11 @@ class PizzasContainer extends Component {
         <div className="monthly-sales-info">
           <MonthlyHigh
             monthlySales={this.state.monthlySales}
+          />
+        </div>
+        <div className="dropdown">
+          <ToppingSearch
+            toppings={this.state.toppings}
           />
         </div>
       </div>
