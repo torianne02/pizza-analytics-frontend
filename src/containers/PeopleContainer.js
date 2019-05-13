@@ -15,6 +15,22 @@ class PeopleContainer extends Component {
     this.handleOnChange = this.handleOnChange.bind(this);
   }
 
+  componentDidMount() {
+    const requestInfo = {
+      method: 'GET',
+    }
+
+    fetch(`http://127.0.0.1:9393/api/v1/people`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        name: response.name,
+        pizzas: response[1],
+        submitted: false,
+      })
+    })
+  }
+
   handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -34,22 +50,6 @@ class PeopleContainer extends Component {
     } else {
       return alert('Oops! Please enter a name!')
     }
-  }
-
-  componentDidMount() {
-    const requestInfo = {
-      method: 'GET',
-    }
-
-    fetch(`http://127.0.0.1:9393/api/v1/people`, requestInfo)
-    .then(response => console.log(response))
-    .then(function(response) {
-      this.setState({
-        name: response.name,
-        pizzas: response[1],
-        submitted: false,
-      })
-    })
   }
 
   getPerson = async () => {
