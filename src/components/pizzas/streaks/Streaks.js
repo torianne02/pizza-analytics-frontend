@@ -1,11 +1,12 @@
 import React from 'react';
+import Streak from './Streak';
 
 const Streaks = ( props ) =>
   <div className="streaks-list">
     { props.streaks.map((streak) => {
       return <Streak
-        numSales={ pizza.num_pizzas }
-        date={ pizza.date_consumed }
+        numSales={ streak.num_pizzas }
+        date={ streak.date_consumed }
       />
     }) }
   </div>
