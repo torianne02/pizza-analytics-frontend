@@ -36,19 +36,23 @@ class PeopleContainer extends Component {
 
   getPerson = async () => {
     const name = this.state.name
+    const requestInfo = {
+      method: 'GET',
+    }
 
-    fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`,
-      {
-        mode: 'no-cors',
-        method: 'GET',
+    // const api_call = await fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo);
+    // const response = await api_call.json();
+    // console.log(response)
+
+    fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo)
+    .then(response => console.log(response))
+    .then(function(response) {
+      this.setState({
+        name: response.name,
+        pizzas: response[1],
+        submitted: false,
       })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-    // this.setState({
-    //   name: response.name,
-    //   pizzas: response[1]
-    //   submitted: false,
-    // })
+    })
   }
 
   render() {
