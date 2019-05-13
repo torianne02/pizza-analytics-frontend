@@ -89,7 +89,7 @@ class PeopleContainer extends Component {
           />
           { this.state.submitted && this.renderPerson() }
         </div>
-        <div className="person-info">
+        <div className="people-info">
           <People
             people={this.state.people}
           />
