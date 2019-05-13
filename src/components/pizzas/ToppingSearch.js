@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-class DropdownContainer extends React.Component {
+class ToppingSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,7 +21,7 @@ class DropdownContainer extends React.Component {
   getDropdownItems() {
     return (
       this.state.toppings.map((topping) => {
-        <DropdownItem>topping</DropdownItem>
+        return (<DropdownItem>{ topping }</DropdownItem>)
       })
     )
   }
@@ -33,7 +33,9 @@ class DropdownContainer extends React.Component {
           <DropdownToggle caret>
             Pizza by Topping
           </DropdownToggle>
-          { this.getDropdownItems() }
+          <DropdownMenu>
+            { this.getDropdownItems() }
+          </DropdownMenu>
         </Dropdown>
       </div>
     )
