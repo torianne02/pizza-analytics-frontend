@@ -5,8 +5,11 @@ import { Navbar, NavbarBrand, NavItem, NavLink, Nav } from 'reactstrap';
 const NavBar = () => {
   return (
     <Navbar>
-      <NavbarBrand href="/" tag={Link}>Pizza Analytics</NavbarBrand>
+      <NavbarBrand>Pizza Analytics</NavbarBrand>
       <Nav className="nav">
+        <NavItem>
+          <NavLink tag={Link} to="/">Pizza Information</NavLink>
+        </NavItem>
         <NavItem>
           <NavLink tag={Link} to="/name-search">Search Names</NavLink>
         </NavItem>
