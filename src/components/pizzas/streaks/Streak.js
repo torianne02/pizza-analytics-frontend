@@ -7,7 +7,7 @@ const Streak = ( props ) =>
       <CardBody>
         <CardTitle>Streak</CardTitle>
         <CardText>
-          <Row>{ props.date } | { props.numSales }</Row>
+          <Row key={ props.i }>{ props.date } | { props.numSales }</Row>
         </CardText>
       </CardBody>
     </Card>
