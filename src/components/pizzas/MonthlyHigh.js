@@ -5,10 +5,10 @@ const MonthlyHigh = ( props ) =>
   <div className="monthly-high">
     <Card>
       <CardBody>
-        <CardTitle>Highest Day of Consumption - Monthly</CardTitle>
+        <CardTitle><h3>Highest Day of Consumption - Monthly</h3></CardTitle>
         <CardSubtitle>
           { props.monthlySales.map((month, i) => {
-            return <Row key={ i }>{ month.date_consumed } | { month.num_sales }</Row>
+            return <Row key={ i }>Day: { month.date_consumed } | Number of Pizzas: { month.num_sales }</Row>
           })}
         </CardSubtitle>
       </CardBody>

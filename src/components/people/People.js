@@ -3,6 +3,7 @@ import { ListGroup, ListGroupItem, ListGroupItemText } from 'reactstrap';
 
 const People = ( props ) =>
   <div className="people-list">
+    <h1>Pizza Consumers</h1>
     <ListGroup>
       <ListGroupItem>
         { props.people.map((person, i) => {

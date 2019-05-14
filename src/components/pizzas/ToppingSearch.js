@@ -11,7 +11,7 @@ const ToppingSearch = props => {
   return (
     <Form onSubmit={ props.handleOnSubmit }>
       <FormGroup>
-        <Label for="topping-search">Search Pizzas by Topping</Label>
+        <Label for="topping-search"><h3>Search Pizzas by Topping</h3></Label>
         <Input
           type="select"
           name="topping"

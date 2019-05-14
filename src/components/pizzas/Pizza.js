@@ -5,7 +5,7 @@ const Pizza = ( props ) =>
   <div className="pizza">
     <ListGroup>
       <ListGroupItem>
-        <ListGroupItemHeading>{ props.topping }</ListGroupItemHeading>
+        <ListGroupItemHeading>Type: { props.topping }</ListGroupItemHeading>
         <ListGroupItemText key={ props.i }>
           Day of Consumption: { props.date }
         </ListGroupItemText>

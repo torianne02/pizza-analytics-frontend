@@ -16,3 +16,27 @@
 .App-link {
   color: #61dafb;
 }
+
+div.topping-search {
+  margin-bottom: 5%;
+}
+
+div.pizzas-info {
+  margin-bottom: 5%;
+}
+
+div.streaks-info {
+  margin-bottom: 5%;
+}
+
+div.monthly-sales-info {
+  margin-bottom: 5%;
+}
+
+div.card-body {
+  text-align: center;
+}
+
+li.list-group-item {
+  border: none;
+}

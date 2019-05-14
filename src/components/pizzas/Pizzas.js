@@ -3,6 +3,7 @@ import Pizza from './Pizza';
 
 const Pizzas = ( props ) =>
   <div className="pizzas-list">
+    <h1>Pizzas</h1>
     { props.pizzas.map((pizza, i) => {
       return <Pizza
         topping={ pizza.topping }
