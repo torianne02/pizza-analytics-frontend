@@ -7,7 +7,7 @@ const MonthlyHigh = ( props ) =>
       <CardBody>
         <CardTitle>Highest Day of Consumption - Monthly</CardTitle>
         <CardText>
-          { props.monthlyHigh.map((month) => {
+          { props.monthlySales.map((month) => {
             return (<Row>{ month.date_consumed } | { month.num_pizzas }</Row>)
           })}
         </CardText>
