@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ToppingSearch from '../components/pizzas/ToppingSearch';
+import Pizzas from '../components/pizzas/Pizzas'
 
 class ToppingSearchContainer extends Component {
   constructor(props) {
@@ -10,6 +11,31 @@ class ToppingSearchContainer extends Component {
       topping: "",
     }
     this.handleOnChange = this.handleOnChange.bind(this);
+  }
+
+  componentDidMount() {
+    const requestInfo = {
+      method: 'GET',
+    }
+
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
+    .then(response => response.json().then(json => {
+      this.setState({
+        pizzas: json,
+        toppings: this.state.pizzas.map((pizza) => {
+          return pizza.topping
+        })
+      })
+    }))
+
+    // need to fill toppings before renders occur 
+    // const toppingArr = []
+    // this.state.pizzas.map((pizza) => {
+    //   toppingArr.push(pizza.topping)
+    // })
+    // this.setState({
+    //   toppings: toppingArr
+    // })
   }
 
   handleOnChange = event => {
@@ -34,11 +60,12 @@ class ToppingSearchContainer extends Component {
   }
 
   getPizzas = async () => {
+    const topping = this.state.topping
     const requestInfo = {
       method: 'GET',
     }
 
-    fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas?topping=${topping}`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({
         pizzas: json,
