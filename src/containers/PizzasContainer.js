@@ -43,8 +43,6 @@ class PizzasContainer extends Component {
         streaks: json,
       })
     }))
-
-    console.log(this.state.streaks)
   }
 
   handleOnChange = event => {
