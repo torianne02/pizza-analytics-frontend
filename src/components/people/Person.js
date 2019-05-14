@@ -6,9 +6,9 @@ const Person = ( props ) =>
     <ListGroup>
       <ListGroupItem>
         <ListGroupItemHeading>{ props.name }</ListGroupItemHeading>
-        { props.pizzas.map((pizza) => {
+        { props.pizzas.map((pizza, i) => {
           return(
-            <ListGroupItemText>
+            <ListGroupItemText key={ i }>
               { pizza.topping } - { pizza.date_consumed }
             </ListGroupItemText>
           )
