@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const ToppingSearch = props => {
 
+  // filters unique toppings to have in dropdown
   const uniqueToppings = () => {
     let unique = [...new Set(props.toppings)]
     return unique
