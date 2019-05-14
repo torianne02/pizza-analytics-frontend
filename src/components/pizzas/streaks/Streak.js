@@ -1,14 +1,14 @@
 import React from 'react';
-import { Row, Card, CardTitle, CardBody, CardText} from 'reactstrap';
+import { Row, Card, CardTitle, CardBody, CardSubtitle} from 'reactstrap';
 
 const Streak = ( props ) =>
   <div className="streak">
     <Card>
       <CardBody>
         <CardTitle>Streak</CardTitle>
-        <CardText>
+        <CardSubtitle>
           <Row key={ props.i }>{ props.date } | { props.numSales }</Row>
-        </CardText>
+        </CardSubtitle>
       </CardBody>
     </Card>
   </div>
