@@ -2,16 +2,22 @@ import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const ToppingSearch = props => {
+
+  const uniqueToppings = () => {
+    let unique = [...new Set(props.toppings)]
+    return unique
+  }
+
   return (
     <Form onSubmit={ props.handleOnSubmit }>
       <FormGroup>
         <Label for="topping-search">Search Pizzas by Topping</Label>
         <Input
           type="select"
-          name="toppings"
+          name="topping"
           onChange={ props.handleOnChange }>
-          { this.props.toppings.map((topping) => {
-            return <option>topping</option>
+          { uniqueToppings().map((topping, i) => {
+            return <option key={ i }>{ topping }</option>
           }) }
         </Input>
         <Button>Search</Button>
