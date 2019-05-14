@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Pizzas from '../components/pizzas/Pizzas';
 import MonthlyHigh from '../components/pizzas/MonthlyHigh';
 import Streaks from '../components/pizzas/streaks/Streaks';
+import ToppingSearch from '../components/pizzas/ToppingSearch';
 
 class PizzasContainer extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class PizzasContainer extends Component {
       monthlySales: [],
       streaks: [],
     }
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +24,9 @@ class PizzasContainer extends Component {
     .then(response => response.json().then(json => {
       this.setState({
         pizzas: json,
+        toppings: json.map((pizza) => {
+          return pizza.topping
+        })
       })
     }))
 
@@ -38,11 +43,56 @@ class PizzasContainer extends Component {
         streaks: json,
       })
     }))
+
+    console.log(this.state.streaks)
+  }
+
+  handleOnChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleOnSubmit = event => {
+    event.preventDefault();
+
+    if (this.state.topping) {
+      this.getPizzas();
+      this.setState({
+        topping: '',
+        pizzas: [],
+        submitted: true,
+      })
+    } else {
+      return alert('Oops! Please select a topping!')
+    }
+  }
+
+  getPizzas = async () => {
+    const topping = this.state.topping
+    const requestInfo = {
+      method: 'GET',
+    }
+
+    fetch(`http://127.0.0.1:9393/api/v1/pizzas?topping=${topping}`, requestInfo)
+    .then(response => response.json().then(json => {
+      this.setState({
+        pizzas: json,
+        submitted: false,
+      })
+    }))
   }
 
   render() {
     return (
       <div className="pizzas">
+        <div className="topping-search">
+          <ToppingSearch
+            toppings={this.state.toppings}
+            handleOnChange={this.handleOnChange}
+            handleOnSubmit={this.handleOnSubmit}
+          />
+        </div>
         <div className="pizzas-info">
           <Pizzas
             pizzas={this.state.pizzas}
