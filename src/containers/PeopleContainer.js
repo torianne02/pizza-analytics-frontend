@@ -16,7 +16,6 @@ class PeopleContainer extends Component {
 
     fetch(`http://127.0.0.1:9393/api/v1/people`, requestInfo)
     .then(response => response.json().then(json => {
-      console.log(json)
       this.setState({
         people: json,
       })
