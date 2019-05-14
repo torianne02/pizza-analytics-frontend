@@ -42,22 +42,12 @@ class NameSearchContainer extends Component {
 
     fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo)
     .then(response => response.json().then(json => {
-      console.log(json)
       this.setState({
-        name: json.name,
+        name: json[0].name,
         pizzas: json[1],
         submitted: false,
       })
     }))
-  }
-
-  renderPerson() {
-    return (
-      <Person
-        name={this.state.name}
-        pizzas={this.state.pizzas}
-      />
-    )
   }
 
   render() {
@@ -68,7 +58,10 @@ class NameSearchContainer extends Component {
           handleOnChange={this.handleOnChange}
           handleOnSubmit={this.handleOnSubmit}
         />
-        { this.state.submitted && this.renderPerson() }
+        <Person
+          name={this.state.name}
+          pizzas={this.state.pizzas}
+        />
       </div>
     )
   }
