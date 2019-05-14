@@ -6,7 +6,7 @@ const SearchForm = props => {
     <Container className="form">
       <Form onSubmit={ props.handleOnSubmit }>
         <FormGroup>
-          <Label for="name">Name: </Label>
+          <Label for="name">Who Do You Want to See?</Label>
           <Input type="text"
             name="name"
             onChange={ props.handleOnChange }
