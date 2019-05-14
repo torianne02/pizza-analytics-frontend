@@ -3,11 +3,13 @@ import { Row, Card, CardTitle, CardBody, CardSubtitle} from 'reactstrap';
 
 const Streak = ( props ) =>
   <div className="streak">
-    <Card>
+    <Card key={ props.key }>
       <CardBody>
         <CardTitle>Streak</CardTitle>
         <CardSubtitle>
-          <Row key={ props.i }>{ props.date } | { props.numSales }</Row>
+          {props.streak.map((day, i) => {
+            return (<Row key={ i }>{ day.date_consumed } | { day.num_pizzas }</Row>)
+          })}
         </CardSubtitle>
       </CardBody>
     </Card>
