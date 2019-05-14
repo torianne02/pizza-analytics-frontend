@@ -40,14 +40,6 @@ class PizzasContainer extends Component {
     }))
   }
 
-  renderPizza() {
-    return (
-      <Pizzas
-        pizzas={this.state.pizzas}
-      />
-    )
-  }
-
   render() {
     return (
       <div className="pizzas">
