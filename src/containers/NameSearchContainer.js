@@ -34,12 +34,14 @@ class NameSearchContainer extends Component {
     }
   }
 
+  // function called after form submission
   getPerson = async () => {
     const name = this.state.name
     const requestInfo = {
       method: 'GET',
     }
 
+    // calls API for ONE person
     fetch(`http://127.0.0.1:9393/api/v1/people?name=${name}`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({

@@ -20,6 +20,7 @@ class PizzasContainer extends Component {
       method: 'GET',
     }
 
+    // calls API for ALL pizzas
     fetch(`http://127.0.0.1:9393/api/v1/pizzas`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({
@@ -30,6 +31,7 @@ class PizzasContainer extends Component {
       })
     }))
 
+    // calls API for monthly sales
     fetch(`http://127.0.0.1:9393/api/v1/pizzas/monthly-sales`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({
@@ -37,6 +39,7 @@ class PizzasContainer extends Component {
       })
     }))
 
+    // calls API for streaks
     fetch(`http://127.0.0.1:9393/api/v1/pizzas/streaks`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({
@@ -66,12 +69,14 @@ class PizzasContainer extends Component {
     }
   }
 
+  // function for form submission API call
   getPizzas = async () => {
     const topping = this.state.topping
     const requestInfo = {
       method: 'GET',
     }
 
+    // calls API for all pizzas of a topping
     fetch(`http://127.0.0.1:9393/api/v1/pizzas?topping=${topping}`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({

@@ -14,6 +14,7 @@ class PeopleContainer extends Component {
       method: 'GET',
     }
 
+    // calls API for ALL people
     fetch(`http://127.0.0.1:9393/api/v1/people`, requestInfo)
     .then(response => response.json().then(json => {
       this.setState({
